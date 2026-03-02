@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    container_name: flowforge-app
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+  db:
+    image: postgres:16
+    container_name: flowforge-db
+    environment:
+      POSTGRES_USER: flowforge
+      POSTGRES_PASSWORD: flowforge
+      POSTGRES_DB: flowforge
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

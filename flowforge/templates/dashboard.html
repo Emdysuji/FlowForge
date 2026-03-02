@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowForge Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f8fafc; color: #111827; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #e5e7eb; padding: 0.5rem; text-align: left; font-size: 0.9rem; }
+    th { background: #f3f4f6; }
+    .success { color: #15803d; }
+    .failed { color: #b91c1c; }
+    .running { color: #1d4ed8; }
+  </style>
+</head>
+<body>
+  <h1>FlowForge Monitoring Dashboard</h1>
+  <div class="grid">
+    <section>
+      <h2>Workflows</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Schedule</th><th>Steps</th></tr></thead>
+        <tbody>
+          {% for workflow in workflows %}
+          <tr>
+            <td>{{ workflow.id }}</td>
+            <td>{{ workflow.name }}</td>
+            <td>{{ workflow.schedule }}</td>
+            <td>{{ workflow.steps }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Recent Runs</h2>
+      <table>
+        <thead><tr><th>Run ID</th><th>Workflow ID</th><th>Status</th><th>Started</th><th>Error</th></tr></thead>
+        <tbody>
+          {% for run in runs %}
+          <tr>
+            <td>{{ run.id }}</td>
+            <td>{{ run.workflow_id }}</td>
+            <td class="{{ run.status }}">{{ run.status }}</td>
+            <td>{{ run.started_at }}</td>
+            <td>{{ run.error_message or '-' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>
