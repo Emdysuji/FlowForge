@@ -158,4 +158,4 @@ Scrape a page, rename a field, and save the result as CSV every 10 minutes:
 ## 👤 Author
 
 **Michael-David Osuji**, AI Engineer
-[LinkedIn](https://www.linkedin.com/in/michael-daivd-osuji-b1811a208/) · [GitHub](https://github.com/Emdysuji)
+[LinkedIn](https://www.linkedin.com/in/michael-davId-osuji) · [GitHub](https://github.com/Emdysuji)
